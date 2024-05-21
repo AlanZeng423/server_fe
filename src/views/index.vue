@@ -6,7 +6,7 @@
       <button class="styled-button">Server 3</button>
       <button class="styled-button">Server 4</button>
       <button class="styled-button">Server 5</button>
-    </div> -->
+    </div> --> 
     <div class="common-layout">
         <el-button>Server 1</el-button>
         <el-button>Server 2</el-button>
