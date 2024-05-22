@@ -7,17 +7,26 @@
       <button class="styled-button">Server 4</button>
       <button class="styled-button">Server 5</button>
     </div> --> 
-    <div class="common-layout">
-        <el-button>Server 1</el-button>
-        <el-button>Server 2</el-button>
-        <el-button>Server 3</el-button>
-        <el-button>Server 4</el-button>
-        <el-button>Server 5</el-button>
-        <!-- <el-button type="primary">Primary</el-button>
-        <el-button type="success">Success</el-button>
-        <el-button type="info">Info</el-button>
-        <el-button type="warning">Warning</el-button>
-        <el-button type="danger">Danger</el-button>  -->
+    <div class="server_container">
+      <div class="container">
+        <div class="servers">
+          <div class="server" v-for="server in servers" :key="server.id">
+            <img :src="server.status === 'on' ? serverOnImage : serverOffImage" :alt="`服务器${server.status}状态`">
+            服务器 {{ server.id }}
+            <button class="toggle-btn" @click="toggleServer(server.id)">
+              {{ server.status === 'on' ? '关闭' : '开启' }}
+            </button>
+            
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+      <div class="container">
+        <div class="main_server">
+          <img :src="main_server.status === 'on' ? serverOnImage : serverOffImage" :alt="`服务器${main_server.status}状态`">
+          主服务器
+        </div>
+      </div>
     </div>
     <br>
     <div>
@@ -37,11 +46,44 @@
     </div>
   </template>
   
-  <script>
+<script>
   // Vue 3 script setup
+  import { ref } from 'vue';
+  import serverOnImage from '@/assets/server_on.png'; // 确保图片在 assets 目录下
+  import serverOffImage from '@/assets/server_off.png'; // 确保图片在 assets 目录下
+
   export default {
-    name: 'HomePage'
+    name: 'HomePage',
+    setup() {
+      const servers = ref([
+        { id: 1, status: 'on' },
+        { id: 2, status: 'on' },
+        { id: 3, status: 'on' },
+        { id: 4, status: 'on' },
+        { id: 5, status: 'on' }
+      ]);
+      
+      const main_server = ref({
+        id: 0, status: 'on'
+      })
+
+      const toggleServer = (serverId) => {
+        const server = servers.value.find(s => s.id === serverId);
+        if (server) {
+          server.status = server.status === 'on' ? 'off' : 'on';
+        }
+      };
+    
+      return {
+        servers,
+        main_server,
+        serverOffImage,
+        serverOnImage,
+        toggleServer
+      }
+    }
   }
+  
   </script>
   
   <style>
@@ -53,6 +95,10 @@
     background-color: #f4f4f4;
     border-radius: 10px;
     margin: 20px;
+  }
+
+  .server_container {
+    background-color: #f4f4f4;
   }
   
   .styled-button {
@@ -75,5 +121,43 @@
     background-color: #004085;
     transform: translateY(1px);
   }
-  </style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; 使容器占满整个视口高度 */
+  }
+  .servers {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    gap: 40px;
+  }
+
+  .server {
+    text-align: center;
+  }
+
+  .server img {
+    width: 80px; /* 调整图片宽度 */
+    height: auto;
+  }
+
+  .main_server img {
+    width: 120px; /* 调整图片宽度 */
+    height: auto;
+  }
+
+
+  .toggle-btn {
+    margin-top: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #143252;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+</style>
   
