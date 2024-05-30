@@ -414,6 +414,50 @@ button {
   background-size: cover;
   z-index: 19;
 }
+.arrow-2 {
+  position: absolute;
+  width: 60px;
+  height: 150px;
+  top: 9px;
+  left: 270px;
+  background: url(../assets/images/arrow_2-removebg-preview.png)
+    no-repeat center;
+  background-size: contain;
+  z-index: 25;
+}
+.arrow-3 {
+  position: absolute;
+  width: 245.405px;
+  height: 148.5px;
+  top: 12px;
+  left: 86px;
+  background: url(../assets/images/arrow_3-removebg-preview.png)
+    no-repeat center;
+  background-size: contain;
+  z-index: 22;
+}
+.arrow-4 {
+  position: absolute;
+  width: 219px;
+  height: 150px;
+  top: 9px;
+  left: 326px;
+  background: url(../assets/images/arrow_4-removebg-preview.png)
+    no-repeat center;
+  background-size: contain;
+  z-index: 22;
+}
+.arrow-5 {
+  position: absolute;
+  width: 55px;
+  height: 147px;
+  top: 12px;
+  left: 326px;
+  background: url(../assets/images/arrow_5-removebg-preview.png)
+    no-repeat center;
+  background-size: contain;
+  z-index: 22;
+}
 .server-span {
   display: flex;
   align-items: center;
