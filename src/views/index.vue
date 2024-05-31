@@ -146,6 +146,7 @@ export default {
 
       socket.onmessage = (event) => {
         const data = JSON.parse(event.data);
+        console.log("received data: ", data);
         arrows.value = data;
       };
 
